@@ -1,0 +1,6 @@
+anu/
+__pycache__/
+*.pyc
+screenshots/
+*.ipynb
+.env
