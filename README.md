@@ -1,99 +1,184 @@
+<div align="center">
+
+# 🎓 Proctor Vision
+
+### 🧠 AI-Based Online Exam Proctoring System
+
+[![Python](https://img.shields.io/badge/Language-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Backend-Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![OpenCV](https://img.shields.io/badge/Vision-OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
+[![MediaPipe](https://img.shields.io/badge/AI-MediaPipe_FaceMesh-00A388?style=for-the-badge&logo=google&logoColor=white)](https://developers.google.com/mediapipe)
+[![JavaScript](https://img.shields.io/badge/Frontend-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+**Proctor Vision** is a real-time, AI-powered online exam proctoring system built to preserve exam integrity during remote assessments. It uses computer vision to monitor candidate behavior through a webcam and detect suspicious head movements — automatically, without human supervision.
+
+</div>
+
+---
+
+## 🔍 Overview
+
+Proctor Vision leverages **MediaPipe FaceMesh** and **OpenCV** to analyze facial landmarks in real time and determine head direction. If a candidate continuously looks away from the screen for more than **6 seconds**, the system:
+
+1. 🔊 Issues a voice warning
+2. ⚠️ Records a violation
+3. 📸 Captures evidence
+
+After **three violations**, the exam is automatically terminated — ensuring fair, unsupervised assessment integrity at scale.
+
+---
+
+## ✨ Key Features
+
+<table>
+<tr>
+<td width="50%">
+
+🎥 **Real-Time Webcam Monitoring**
+Continuous candidate monitoring throughout the exam
+
+🧭 **AI Head Direction Detection**
+Powered by MediaPipe FaceMesh facial landmark analysis
+
+⏱️ **6-Second Violation Rule**
+Detects sustained, continuous looking-away behavior
+
+</td>
+<td width="50%">
+
+🔔 **Automated Voice Alerts**
+Real-time spoken warnings to notify candidates instantly
+
+🖼️ **Screenshot Evidence Capture**
+Automatic proof captured at the moment of violation
+
+🚫 **Auto Exam Termination**
+Exam ends automatically after repeated violations
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+
+📊 **Live Monitoring Dashboard** — real-time direction tracking and violation count display
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🏗 System Architecture
+
+Proctor Vision is built with a clean two-part architecture:
+
+### 🎨 Frontend
+- Built with **HTML, CSS, and JavaScript**
+- Captures live webcam frames and streams them to the backend
+- Displays real-time proctoring status, warnings, and violation count
+
+### ⚙️ Backend
+- Built with **Flask (Python)**
+- Processes frames using **OpenCV** and **MediaPipe**
+- Implements violation detection logic and alert system
+- Manages screenshot capture and exam state
+
+```text
 Proctor Vision
+│
+├── Frontend
+│   ├── HTML / CSS / JavaScript
+│   └── Webcam Capture + Status UI
+│
+└── Backend
+    ├── Flask API
+    ├── OpenCV + MediaPipe Processing
+    ├── Violation & Alert Engine
+    └── Screenshot & State Manager
+```
 
-AI-Based Online Exam Proctoring System
+---
 
-Overview
-Proctor Vision is a real-time AI-powered online exam proctoring system designed to maintain exam integrity during remote assessments. The system uses computer vision techniques to monitor candidate behavior through a webcam and detect suspicious head movements.
-Using MediaPipe FaceMesh and OpenCV, the system analyzes facial landmarks to determine head direction. If a candidate continuously looks away from the screen for more than 6 seconds, a violation is recorded, a warning is issued, and evidence is captured. After three violations, the exam is automatically terminated.
+## 🛠 Technologies Used
 
-Key Feature
-Real-time webcam monitoring during online exams
-AI-based head direction detection using MediaPipe FaceMesh
-Continuous 6-second rule violation detection
-Automated voice alerts to notify candidates
-Screenshot capture for violation evidence
-Automatic exam termination after repeated violations
-Live monitoring of direction and violation count
-System Architecture
-The system consists of two main components:
+<table>
+<tr>
+<td valign="top" width="50%">
 
-Frontend
-Built with HTML, CSS, and JavaScript
-Captures webcam frames and sends them to the backend
-Displays proctoring status, warnings, and violation count
+**💻 Languages**
+- Python
+- JavaScript
+- HTML
+- CSS
 
-Backend
-Built using Flask (Python)
-Processes frames using OpenCV and MediaPipe
-Implements violation detection logic and alert system
-Captures screenshots and manages exam state
+</td>
+<td valign="top" width="50%">
 
-Technologies Used
+**📦 Frameworks & Libraries**
+- Flask
+- OpenCV
+- MediaPipe FaceMesh
+- NumPy
+- PyTTSX3 *(voice alerts)*
 
-Languages
+</td>
+</tr>
+</table>
 
-Python
-JavaScript
-HTML
-CSS
+---
 
-Frameworks & Libraries
+## ⚡ How It Works
 
-Flask
-OpenCV
-MediaPipe FaceMesh
-NumPy
-PyTTSX3 (voice alerts)
+| Step | Action |
+|:---:|---|
+| 1️⃣ | Candidate starts the exam using the **Start Test** button |
+| 2️⃣ | System activates the webcam and begins capturing frames |
+| 3️⃣ | Frames are streamed to the Flask backend for processing |
+| 4️⃣ | MediaPipe detects facial landmarks and determines head direction |
+| 5️⃣ | If the candidate looks away for **6+ seconds** → voice warning 🔊 + violation recorded ⚠️ + screenshot captured 📸 |
+| 6️⃣ | After **3 violations**, the exam is **automatically terminated** 🚫 |
 
-How It Works
+---
 
-The candidate starts the exam using the Start Test button.
-The system activates the webcam and begins capturing frames.
-Frames are sent to the Flask backend for processing.
-MediaPipe detects facial landmarks and determines head direction.
-If the candidate looks away for more than 6 seconds, the system:
-Issues a voice warning
-Records a violation
-Captures a screenshot
-After three violations, the exam is automatically terminated.
+## 🚀 Installation & Setup
 
-
-## Installation & Setup
-
-Clone the repository
-
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/Shashank-2005468/proctor-vision.git
 cd proctor-vision
 ```
 
-Create a virtual environment
-
+### 2️⃣ Create a Virtual Environment
 ```bash
 python -m venv venv
 ```
 
-Activate the environment
+### 3️⃣ Activate the Environment
 
-### Windows
+**Windows**
 ```bash
 venv\Scripts\activate
 ```
 
-### Linux / macOS
+**Linux / macOS**
 ```bash
 source venv/bin/activate
 ```
 
-Install dependencies
-
+### 4️⃣ Install Dependencies
 ```bash
 pip install flask opencv-python mediapipe numpy pyttsx3
 ```
 
-Run the application
-
+### 5️⃣ Run the Application
 ```bash
 python app.py
 ```
 
+---
+
+<div align="center">
+
+### ⭐ If you find this project useful, consider giving it a star!
+
+</div>
