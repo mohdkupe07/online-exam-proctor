@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MHT-CET Exam Portal</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header class="cbt-header">
+      <div class="header-left">
+        <div class="logo-area">STATE CET CELL</div>
+        <div class="exam-info">
+          <h2 id="exam-name">MHT-CET 2025 (PCM)</h2>
+          <p id="subject-name">Subject: Physics, Chemistry, Mathematics</p>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <!-- Alert Text Area -->
+        <div id="alert-box" class="alert-box hidden">
+          <span class="alert-icon">⚠️</span>
+          <span id="alert-text">Please look forward at the screen.</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="timer-box">
+          <span class="label">Time Left:</span>
+          <span id="timer">10:00</span>
+        </div>
+        <div class="violation-box">
+          <span class="label">Violations:</span>
+          <span id="violation-count">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Exam Container -->
+    <div class="main-container">
+      <!-- Left Side: Question Area -->
+      <main class="question-area">
+        <div class="question-card">
+          <div class="question-header-row">
+            <h3 id="question-number">Question 1</h3>
+            <div class="marks-info">1 Mark</div>
+          </div>
+
+          <div class="question-content">
+            <p id="question-text">Loading question...</p>
+          </div>
+
+          <div class="options-container" id="options-container">
+            <!-- Options will be injected here by JS -->
+          </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="footer-nav">
+          <div class="nav-left">
+            <button id="btn-skip" class="btn btn-secondary">Skip</button>
+            <button id="btn-mark" class="btn btn-warning">
+              Mark for Review
+            </button>
+          </div>
+          <div class="nav-right">
+            <button id="btn-prev" class="btn btn-primary" disabled>
+              Previous
+            </button>
+            <button id="btn-next" class="btn btn-success">Next</button>
+            <button id="btn-finish" class="btn btn-danger hidden">
+              Finish Test
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Right Side: Sidebar -->
+      <aside class="sidebar">
+        <!-- Webcam Feed (Always Active) -->
+        <div class="webcam-wrapper">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="canvas" style="display: none"></canvas>
+          <div class="rec-indicator">🔴 PROCTORING ACTIVE</div>
+        </div>
+
+        <!-- Question Palette -->
+        <div class="palette-container">
+          <h4>Question Palette</h4>
+          <div class="palette-grid" id="palette-grid">
+            <!-- Palette buttons 1-10 injected by JS -->
+          </div>
+
+          <div class="palette-legend">
+            <div class="legend-item">
+              <span class="dot answered"></span> Answered
+            </div>
+            <div class="legend-item">
+              <span class="dot not-visited"></span> Not Visited
+            </div>
+            <div class="legend-item">
+              <span class="dot marked"></span> Marked
+            </div>
+            <div class="legend-item">
+              <span class="dot active"></span> Current
+            </div>
+          </div>
+        </div>
+
+        <div class="user-profile">
+          <div class="avatar">👤</div>
+          <div class="user-details">
+            <p><strong>Student Name</strong></p>
+            <p>ID: 12345678</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="overlay">
+      <div class="overlay-content login-card">
+        <div class="login-header">
+          <h2>Candidate Login</h2>
+        </div>
+        <div class="login-body">
+          <div class="form-group">
+            <label for="login-name">Candidate Name</label>
+            <input
+              type="text"
+              id="login-name"
+              placeholder="Enter your name"
+              autocomplete="off"
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-dob">Password (DOB)</label>
+            <input type="password" id="login-dob" placeholder="DD/MM/YYYY" />
+          </div>
+          <button id="btn-login" class="btn btn-primary btn-block">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start Overlay -->
+    <div id="start-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <h2>Welcome to the Exam</h2>
+        <p>Please ensure your webcam is connected.</p>
+        <p>Looking away from the screen will trigger a violation.</p>
+        <button id="btn-start-test" class="btn btn-primary">Start Exam</button>
+      </div>
+    </div>
+
+    <!-- Termination Overlay -->
+    <div id="termination-overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <div class="icon">🚫</div>
+        <h2>Test Terminated</h2>
+        <p>The system detected multiple violations or the time has expired.</p>
+        <p>Your answers have been locked and submitted.</p>
+        <button onclick="location.reload()" class="btn btn-primary">
+          Return to Home
+        </button>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
